@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "multi-monitor.workspaces",
+  "name": "Multi-Monitor Workspaces",
+  "version": "1.0.0",
+  "author": "and00pium",
+  "description": "Monitor-aware workspace indicators: 1–5 on HDMI and 6–10 on the laptop display.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Workspaces.qml"
+  },
+  "barWidget": {
+    "displayName": "Multi-Monitor Workspaces",
+    "description": "Monitor-aware workspace indicators",
+    "category": "Compositor",
+    "allowMultiple": false
+  }
+}
