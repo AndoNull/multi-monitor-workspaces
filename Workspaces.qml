@@ -5,8 +5,8 @@ import Quickshell.Hyprland
 import qs.Commons
 import qs.Ui
 
-// With HDMI-A-1 connected: HDMI shows 1–5 and eDP-1 shows 6–10.
-// With HDMI-A-1 absent: the laptop returns to the normal 1–5 view.
+// External displays show 1–5; the built-in display shows 6–10 whenever
+// an external display is connected. A single-display setup shows 1–5.
 BarWidget {
   id: root
   moduleName: "omarchy.workspaces"
@@ -25,18 +25,22 @@ BarWidget {
     return null
   }
 
-  function hdmiConnected() {
+  function isInternalDisplay(name) {
+    // eDP, LVDS, and DSI are the standard connector families for laptop
+    // panels. Match the family instead of relying on one machine's suffix.
+    return /^(edp|lvds|dsi)/i.test(String(name || ""))
+  }
+
+  function hasExternalDisplay() {
     var monitors = Hyprland.monitors.values
     for (var i = 0; i < monitors.length; i++) {
-      if (String(monitors[i].name || "") === "HDMI-A-1") return true
+      if (!isInternalDisplay(monitors[i].name)) return true
     }
     return false
   }
 
   function workspaceIds() {
-    // A laptop-only setup stays exactly like the stock widget: 1–5.
-    if (!hdmiConnected()) return [1, 2, 3, 4, 5]
-    if (screenName === "eDP-1") return [6, 7, 8, 9, 10]
+    if (hasExternalDisplay() && isInternalDisplay(screenName)) return [6, 7, 8, 9, 10]
     return [1, 2, 3, 4, 5]
   }
 
