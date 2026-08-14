@@ -18,9 +18,14 @@ If your connectors use different names, update `hdmiConnected()` and `workspaceI
 
 ## Install
 
-1. Copy this folder to `~/.config/omarchy/plugins/multi-monitor.workspaces/`.
-2. Run `omarchy-shell shell rescanPlugins`.
-3. Enable **Multi-Monitor Workspaces** in the bar widget settings.
+Install and enable using Omarchy's plugin command:
+
+```sh
+omarchy plugin add https://github.com/DillanMateusHkl/multi-monitor-workspaces.git --enable
+```
+
+After installation, enable Multi-Monitor Workspaces in the bar widget settings if it is not already visible.
+
 
 ## Validate
 
