@@ -1,5 +1,7 @@
 # Multi-Monitor Workspaces
 
+![Multi-Monitor Workspaces preview](preview.png)
+
 An Omarchy bar widget that assigns workspace indicators across displays:
 
 - **External displays:** workspaces 1–5
